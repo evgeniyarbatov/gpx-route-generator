@@ -3,32 +3,24 @@ services:
     image: osrm/osrm-backend
     container_name: "route-gen-osrm"
     volumes:
-    - ~/Documents/osm:/data
-    - ./osrm/profiles:/profiles
+      - ~/Documents/osm:/data
+      - ./osrm/profiles:/profiles
     networks:
-    - default
+      - default
     ports:
-    - 6000:5000
+      - 6000:5000
     restart: unless-stopped
     command: bash -c "osrm-extract -l INFO -p /profiles/foot.lua /data/singapore.osm.pbf && osrm-partition -l INFO /data/singapore.osrm && osrm-customize -l INFO /data/singapore.osrm && osrm-routed -l INFO --algorithm mld /data/singapore.osrm"
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:6000/nearest/v1/foot/103.89421880750119,1.3095686738894927"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
   ui:
     build:
       context: ./ui
       dockerfile: Dockerfile
     container_name: "route-gen-ui"
     ports:
-    - 80:80
+      - 80:80
     networks:
-    - default
+      - default
     restart: unless-stopped
-    depends_on:
-      osrm:
-        condition: service_healthy
 
 networks:
   default:
