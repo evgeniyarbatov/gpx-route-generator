@@ -71,10 +71,9 @@ def plot_gpx(route, ax):
     ax.tick_params(axis='both', which='both', bottom=False, top=False, left=False, right=False)
  
 def create_routes(start_lat, start_lng, distance_km):
-    fig, axes = plt.subplots(5, 2, figsize=(12, 15))
-    axes = axes.flatten()
-  
-    for i, ax in enumerate(axes):
+    figs = []
+
+    for i in range(NUMBER_OF_PLOTS):
         points = get_points(start_lat, start_lng, distance_km)
 
         # Get route which connects the points
@@ -89,8 +88,8 @@ def create_routes(start_lat, start_lng, distance_km):
         # Run OSRM on smooth route
         osrm_route = get_route(rdp_points)
         
+        fig, ax = plt.subplots(1, 1, figsize=(12, 30))
         plot_gpx(osrm_route, ax)
+        figs.append(fig)
     
-    plt.tight_layout()
-    
-    return fig
+    return figs

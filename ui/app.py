@@ -27,7 +27,8 @@ create = st.button(
 )
 
 if create:  
-  fig = create_routes(start_lat, start_lng, distance_km)
-  st.pyplot(fig)
+  figs = create_routes(start_lat, start_lng, distance_km)
+  for fig in figs:
+    st.pyplot(fig)
 
 
