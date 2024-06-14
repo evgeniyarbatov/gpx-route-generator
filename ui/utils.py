@@ -5,13 +5,17 @@ import random
 
 from geopy.distance import distance
 from geopy.point import Point
+from geopy.distance import geodesic
 
 import matplotlib.pyplot as plt
 import contextily as ctx
 
+import xml.dom.minidom
+from xml.etree.ElementTree import Element, SubElement, tostring
+
 from rdp import rdp
 
-NUMBER_OF_PLOTS = 10
+NUMBER_OF_PLOTS = 20
 
 def get_center_point(lat, lng, distance_km):    
     bearing = random.uniform(0, 360)
@@ -69,9 +73,37 @@ def plot_gpx(route, ax):
     ax.set_yticks([])
     ax.set_xticks([])
     ax.tick_params(axis='both', which='both', bottom=False, top=False, left=False, right=False)
+
+def get_distance(route):
+    total_distance = 0
+    for i in range(len(route) - 1):
+        total_distance += geodesic(route[i], route[i + 1]).kilometers
+    return round(total_distance, 2)
+
+def create_gpx(route):
+    gpx = Element('gpx', {
+        'creator': 'StravaGPX',
+        'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
+        'xsi:schemaLocation': 'http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd',
+        'version': '1.1',
+        'xmlns': 'http://www.topografix.com/GPX/1/1'
+    })
+    trk = SubElement(gpx, "trk")
+    trkseg = SubElement(trk, "trkseg")
+
+    for point in route:
+        SubElement(trkseg, "trkpt", attrib={"lat": str(point[0]), "lon": str(point[1])})
+
+    gpx_file = xml.dom.minidom.parseString(
+        tostring(gpx, encoding="unicode")
+    ).toprettyxml()
+ 
+    return gpx_file
  
 def create_routes(start_lat, start_lng, distance_km):
     figs = []
+    gpx_routes = []
+    distances = []
 
     for i in range(NUMBER_OF_PLOTS):
         points = get_points(start_lat, start_lng, distance_km)
@@ -91,5 +123,13 @@ def create_routes(start_lat, start_lng, distance_km):
         fig, ax = plt.subplots(1, 1, figsize=(12, 30))
         plot_gpx(osrm_route, ax)
         figs.append(fig)
+        
+        gpx_routes.append(
+            create_gpx(osrm_route)
+        )
+        
+        distances.append(
+            get_distance(osrm_route)
+        )
     
-    return figs
+    return figs, gpx_routes, distances
