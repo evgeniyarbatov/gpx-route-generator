@@ -1,4 +1,28 @@
 services:
+  postgis:
+    image: "postgis/postgis"
+    environment:
+      - POSTGRES_DB=gpx
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+    ports:
+      - 5432:5432
+    networks:
+      - default
+    restart: unless-stopped
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: arbatovevgeny@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    networks:
+      - default
+    ports:
+      - "80:80"
+    depends_on:
+      - postgis
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
   osrm:
     image: osrm/osrm-backend
     container_name: "route-gen-osrm"
@@ -25,3 +49,6 @@ services:
 networks:
   default:
     driver: bridge
+
+volumes:
+  pgadmin-data:

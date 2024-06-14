@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Best running segments</name>
+    <description/>
+    <Style id="line-000000-1200-normal">
+      <LineStyle>
+        <color>ff000000</color>
+        <width>1.2</width>
+      </LineStyle>
+    </Style>
+    <Style id="line-000000-1200-highlight">
+      <LineStyle>
+        <color>ff000000</color>
+        <width>1.8</width>
+      </LineStyle>
+    </Style>
+    <StyleMap id="line-000000-1200">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#line-000000-1200-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#line-000000-1200-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Folder>
+      <name>Segments</name>
+      <Placemark>
+        <name>Dakota warmup</name>
+        <description>Straight road to Dakota MRT. Feels a bit dusty with a lot of construction sites but as close to a running track as it gets in this area. Best view of the night sky in the early morning.</description>
+        <styleUrl>#line-000000-1200</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            103.8928396,1.3096101,0
+            103.892845,1.3093473,0
+            103.8894305,1.3086474,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>River walk</name>
+        <description>Winding path a long the river. It usually gets quite sunny but evenings and early morning are the best times of day.</description>
+        <styleUrl>#line-000000-1200</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            103.8897688,1.3084008,0
+            103.8899244,1.3077948,0
+            103.890037,1.3071888,0
+            103.8900638,1.3069099,0
+            103.8899619,1.3066311,0
+            103.8898171,1.3064219,0
+            103.8895649,1.3062449,0
+            103.8892209,1.3061528,0
+            103.8888768,1.3060928,0
+            103.8881457,1.305973,0
+            103.886984,1.3057975,0
+            103.884639,1.3054252,0
+            103.8839668,1.3048602,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Riverside</name>
+        <description>Probably the best park close to Stadium. Very leafy. Winding route makes it very interesting.</description>
+        <styleUrl>#line-000000-1200</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            103.8837145,1.3042057,0
+            103.8801096,1.3003658,0
+            103.8786505,1.29895,0
+            103.8776205,1.2983493,0
+            103.8761829,1.2980704,0
+            103.8750456,1.2981133,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Detour</name>
+        <description>Good path right next to the water. You will get a great view of the early morning or night city.</description>
+        <styleUrl>#line-000000-1200</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            103.872359,1.2986206,0
+            103.8721015,1.2992427,0
+            103.8712646,1.2992427,0
+            103.871329,1.2990282,0
+            103.8716723,1.2990067,0
+            103.8717796,1.2987279,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>View of Gardens by The Bay</name>
+        <description>Possibly the best straight line and flat course segment. Great views. A lot of trees. If you are very early or very late, there will be very few people.</description>
+        <styleUrl>#line-000000-1200</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            103.8664313,1.2940558,0
+            103.8678046,1.2905376,0
+            103.8695641,1.2870624,0
+            103.8719674,1.2841663,0
+            103.8737484,1.2822356,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Sunset run</name>
+        <description>Great views of sunset or sunrise. Never dissapointing.</description>
+        <styleUrl>#line-000000-1200</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            103.8737837,1.2821759,0
+            103.8746367,1.2815163,0
+            103.8755915,1.2808459,0
+            103.8758222,1.2807279,0
+            103.8760153,1.2808673,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Quiet Gardens by The Bay</name>
+        <description>Have Gardens by the Bay all to yourself. Pleasant place to run any time of the day and in any weather. Can smell flowers along the way and enjoy the company of trees.</description>
+        <styleUrl>#line-000000-1200</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            103.8595906,1.2777671,0
+            103.8612535,1.280513,0
+            103.8621333,1.2824544,0
+            103.8624981,1.2838703,0
+            103.8626489,1.2856599,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Hidden trail</name>
+        <description>This side of the river is much less popular with people. It is perhaps has less sightseeing but it is perfect for runners who seek solitude.</description>
+        <styleUrl>#line-000000-1200</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            103.8649357,1.2894661,0
+            103.8645924,1.2913968,0
+            103.8645495,1.2931559,0
+            103.8642061,1.2951724,0
+            103.8639916,1.2978754,0
+            103.8648499,1.2998919,0
+            103.8662661,1.3007929,0
+            103.8674677,1.3016939,0
+            103.8675106,1.3032384,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Solitude</name>
+        <description>I believe Solitude is also the name of the Strava segment in the same place. I am never tired of this stretch.</description>
+        <styleUrl>#line-000000-1200</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            103.8684643,1.2938102,0
+            103.868593,1.294132,0
+            103.8690329,1.2941749,0
+            103.8697088,1.2939711,0
+            103.8704384,1.2941427,0
+            103.8712001,1.2944001,0
+            103.8720263,1.2944109,0
+            103.8726271,1.2944109,0
+            103.8731957,1.2944645,0
+            103.8737107,1.2942393,0
+            103.874054,1.2940676,0
+            103.8744188,1.29366,0
+            103.8747943,1.2933383,0
+            103.8750625,1.2930379,0
+            103.8753093,1.2928449,0
+            103.8758565,1.2929092,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Fast Run</name>
+        <description>I like running fast on this segment. There is only the straight line of road, trees and yourself here.</description>
+        <styleUrl>#line-000000-1200</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            103.8783178,1.2946254,0
+            103.8808498,1.2947112,0
+            103.8825879,1.2947326,0
+            103.8834462,1.2947541,0
+            103.8841757,1.2946683,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>With yourself</name>
+        <description>This is the place where I come to talk with myself and go inside myself. There is nothing but running here.</description>
+        <styleUrl>#line-000000-1200</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            103.8657768,1.2807055,0
+            103.8644679,1.2799118,0
+            103.8636095,1.2787963,0
+            103.8629014,1.2777451,0
+            103.8624508,1.2769085,0
+            103.8620217,1.2762649,0
+            103.8616784,1.2762434,0
+            103.861099,1.2766296,0
+            103.8604553,1.2770586,0
+            103.8597901,1.2775306,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Slow turn</name>
+        <description>Run by the bay. Very pleasant</description>
+        <styleUrl>#line-000000-1200</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            103.8675179,1.2980548,0
+            103.8675179,1.2983229,0
+            103.8672926,1.2984784,0
+            103.8669171,1.2985482,0
+            103.866622,1.2984784,0
+            103.8663806,1.2982907,0
+            103.866268,1.2981138,0
+            103.8661446,1.2977759,0
+            103.8660641,1.2974166,0
+            103.8660158,1.2968588,0
+            103.8660158,1.2963225,0
+            103.8661124,1.2956789,0
+            103.8663162,1.294735,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Tanjong Rhu Bridge</name>
+        <description>Best views in the early morning when the sun is just rising.</description>
+        <styleUrl>#line-000000-1200</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            103.873526,1.2988002,0
+            103.8740517,1.2996047,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Kallang Riverside Park</name>
+        <description>I am glad I am able to run this far. One of my favorite parks</description>
+        <styleUrl>#line-000000-1200</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            103.8677252,1.3065224,0
+            103.8684547,1.3073805,0
+            103.8690341,1.3078525,0
+            103.8693345,1.3081742,0
+            103.8693989,1.308732,0
+            103.8696563,1.3090323,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Backyard Run</name>
+        <description>Very quiet street surrounded by private houses.</description>
+        <styleUrl>#line-000000-1200</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            103.8993534,1.3093335,0
+            103.9015421,1.3049788,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Curved Bridge</name>
+        <description>This bridge is as good as a hill. When I want to practice running hills, I head here. It is the closest one to my home.</description>
+        <styleUrl>#line-000000-1200</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            103.8772891,1.2982079,0
+            103.8775466,1.2993127,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Open Water</name>
+        <description>Views of Marina Bay on one side and the sea on the other. It is extremely hot in the midday and very windy during the rain - good challenge.</description>
+        <styleUrl>#line-000000-1200</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            103.8714773,1.280656,0
+            103.8735802,1.2821577,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Tourist</name>
+        <description>The classic tourist route. It tends to get very crowded. It is best to get here very early.</description>
+        <styleUrl>#line-000000-1200</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            103.8628647,1.2855928,0
+            103.8638303,1.2850994,0
+            103.8644311,1.285078,0
+            103.864989,1.2849278,0
+            103.8653538,1.2846275,0
+            103.8655898,1.2844344,0
+            103.8664052,1.2842199,0
+            103.8667056,1.2838766,0
+            103.8677356,1.2834476,0
+            103.8683364,1.28304,0
+            103.8691947,1.2824179,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Circle</name>
+        <description>There is something magic about running around this circle. Try to go 2-3 rounds. I sometimes want to spend the whole day running in this spot.</description>
+        <styleUrl>#line-000000-1200</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            103.8617757,1.2794521,0
+            103.8617275,1.2796827,0
+            103.8617704,1.2798275,0
+            103.8620171,1.2799026,0
+            103.86228,1.2799187,0
+            103.8624838,1.2798382,0
+            103.8625804,1.2796344,0
+            103.8626072,1.2794467,0
+            103.8626233,1.2792912,0
+            103.8625965,1.2791303,0
+            103.8623927,1.2790606,0
+            103.8621834,1.2790123,0
+            103.8620762,1.2790928,0
+            103.8619152,1.2792858,0
+            103.8618294,1.2793716,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Vortex</name>
+        <description>Run up and down this amazing building. Was it not made to run?</description>
+        <styleUrl>#line-000000-1200</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            103.86985,1.2815186,0
+            103.8700163,1.2810789,0
+            103.8702148,1.2805962,0
+            103.8704025,1.2803549,0
+            103.8705956,1.2802315,0
+            103.8707941,1.2802261,0
+            103.8709175,1.2803173,0
+            103.8709604,1.2804889,0
+            103.87088,1.2806927,0
+            103.8707673,1.2808751,0
+            103.8706547,1.2809716,0
+            103.8704669,1.2811218,0
+            103.870306,1.2811218,0
+            103.870204,1.281036,0
+            103.8702094,1.2808912,0
+            103.8702577,1.280741,0
+            103.8703113,1.280623,0
+            103.8704186,1.2804675,0
+            103.8705474,1.2803602,0
+            103.8706868,1.2803066,0
+            103.8707888,1.280312,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Forgotten Trail</name>
+        <description>The main reason to run here is to come and see the cruise ships.</description>
+        <styleUrl>#line-000000-1200</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            103.8712212,1.2782014,0
+            103.8691183,1.276571,0
+            103.8679811,1.2758631,0
+            103.8679382,1.2755199,0
+            103.8666722,1.2746832,0
+            103.8653418,1.2739753,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Big open space</name>
+        <description>This is another place to seek solitude. Very peaceful here. Occasionally you can spot cranes.</description>
+        <styleUrl>#line-000000-1200</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            103.8771584,1.2879924,0
+            103.8766863,1.2885931,0
+            103.8761499,1.2891937,0
+            103.8756993,1.2898588,0
+            103.8754418,1.2905667,0
+            103.8752272,1.2914891,0
+            103.8752272,1.2921327,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Back to school</name>
+        <description>A lot of school children every morning but weekends and early mornings are very pleasant.</description>
+        <styleUrl>#line-000000-1200</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            103.8894692,1.3088846,0
+            103.8889972,1.3110727,0
+            103.8887182,1.3117163,0
+            103.888568,1.312746,0
+            103.8888684,1.3133681,0
+            103.8894907,1.3135182,0
+            103.8903061,1.3136684,0
+            103.8913146,1.3138615,0
+            103.8917652,1.3139902,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>
