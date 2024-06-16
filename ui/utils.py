@@ -24,14 +24,16 @@ def get_center_point(lat, lng, distance_km):
     point = distance(kilometers=distance_km).destination(original_point, bearing)
     return (point.latitude, point.longitude)
   
-def get_points_on_circle(lat, lng, distance_km):
+def get_points_on_circle(lat, lng, randomness_amount, distance_km):
     points = []
 
     (lat, lon) = get_center_point(lat, lng, distance_km)
     center_point = Point(lat, lon)
     
-    num_points = random.randint(5, 10)
-    angle_interval = 360 / num_points
+    if randomness_amount == 0:
+        return points
+        
+    angle_interval = 360 / randomness_amount
     
     for i in range(num_points):
         angle = angle_interval * i
@@ -40,9 +42,16 @@ def get_points_on_circle(lat, lng, distance_km):
 
     return points
 
-def get_points(start_lat, start_lng, distance_km):
-    points = get_points_on_circle(start_lat, start_lng, distance_km)
-    points = [(start_lat, start_lng)] + points + [(start_lat, start_lng)]
+def get_points(
+    start_lat, 
+    start_lng, 
+    stop_lat,
+    stop_lng,
+    randomness_amount,
+    distance_km,   
+):
+    points = get_points_on_circle(start_lat, start_lng, randomness_amount, distance_km)
+    points = [(start_lat, start_lng)] + points + [(stop_lat, stop_lng)]
     return points 
 
 def osrm_format(coords):
@@ -100,18 +109,39 @@ def create_gpx(route):
  
     return gpx_file
  
-def create_routes(start_lat, start_lng, distance_km):
+def create_routes(
+    start_lat, 
+    start_lng, 
+    stop_lat,
+    stop_lng,
+    randomness_amount,
+    distance_km,
+):
     figs = []
     gpx_routes = []
     distances = []
 
     for i in range(NUMBER_OF_PLOTS):
-        points = get_points(start_lat, start_lng, distance_km)
+        points = get_points(
+            start_lat, 
+            start_lng, 
+            stop_lat,
+            stop_lng,
+            randomness_amount,
+            distance_km,  
+        )
 
         # Get route which connects the points
         osrm_route = get_route(points) 
         while osrm_route is None:
-            points = get_points(start_lat, start_lng, distance_km)
+            points = get_points(
+                start_lat, 
+                start_lng, 
+                stop_lat,
+                stop_lng,
+                randomness_amount,
+                distance_km,  
+            )
             osrm_route = get_route(points)                   
 
         # Make route more smooth
