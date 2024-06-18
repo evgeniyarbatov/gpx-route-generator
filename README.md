@@ -4,6 +4,8 @@ Create GPX files for a set of destinations defined in KML file.
 
 ## Configure
 
+`profiles/foot.lua` is optimised to select ways with 'Park Connector' in them and prefer designated foot paths. Adjust as required.
+
 Update `docker-compose.yaml` with the location and name of your PBF file:
 
 ```
