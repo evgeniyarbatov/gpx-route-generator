@@ -1,6 +1,7 @@
 services:
   osrm:
     image: osrm/osrm-backend
+    hostname: osrm
     volumes:
       - ~/Documents/osm:/data
       - ./profiles:/profiles

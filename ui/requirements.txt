@@ -1,8 +1,5 @@
-gpxpy
-geopy
 streamlit
 requests
 polyline
-rdp
 matplotlib
 contextily
