@@ -9,7 +9,9 @@ RUN python3 -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 RUN apt-get update && apt-get install -y \
-    curl
+    curl \
+    libgdal-dev \
+    g++
 
 COPY requirements.txt .
 

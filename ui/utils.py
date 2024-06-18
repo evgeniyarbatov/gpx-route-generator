@@ -1,7 +1,7 @@
 import requests
 import polyline
-import math
 import random
+import os
 
 from geopy.distance import distance
 from geopy.point import Point
@@ -14,6 +14,12 @@ import xml.dom.minidom
 from xml.etree.ElementTree import Element, SubElement, tostring
 
 from rdp import rdp
+
+def get_osrm_hostname():
+    if os.path.exists('/.dockerenv'):
+        return 'osrm'
+    else:
+        return 'localhost'
 
 def get_center_point(lat, lng, distance_km):    
     bearing = random.uniform(0, 360)
@@ -62,7 +68,8 @@ def get_route(points):
         'geometries': 'polyline6',
     }
     
-    response = requests.get(f"http://127.0.0.1:6000/route/v1/foot/{points}", params=params)
+    hostname = get_osrm_hostname()
+    response = requests.get(f"http://{hostname}:6000/route/v1/pcn/{points}", params=params)
     routes = response.json()
     
     if routes['code'] != 'Ok':
