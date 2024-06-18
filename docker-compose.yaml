@@ -34,15 +34,15 @@ services:
       - 6000:5000
     restart: unless-stopped
     command: bash -c "osrm-extract -l INFO -p /profiles/pcn.lua /data/singapore.osm.pbf && osrm-partition -l INFO /data/singapore.osrm && osrm-customize -l INFO /data/singapore.osrm && osrm-routed -l INFO --algorithm mld /data/singapore.osrm"
-  ui:
-    build:
-      context: ./ui
-      dockerfile: Dockerfile
-    ports:
-      - 80:80
-    networks:
-      - default
-    restart: unless-stopped
+  # ui:
+  #   build:
+  #     context: ./ui
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 80:80
+  #   networks:
+  #     - default
+  #   restart: unless-stopped
 
 networks:
   default:
