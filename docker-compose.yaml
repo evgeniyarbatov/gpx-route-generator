@@ -1,28 +1,4 @@
 services:
-  postgis:
-    image: "postgis/postgis"
-    environment:
-      - POSTGRES_DB=gpx
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=root
-    ports:
-      - 5432:5432
-    networks:
-      - default
-    restart: unless-stopped
-  pgadmin:
-    image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: arbatovevgeny@gmail.com
-      PGADMIN_DEFAULT_PASSWORD: root
-    networks:
-      - default
-    ports:
-      - "8080:80"
-    depends_on:
-      - postgis
-    volumes:
-      - pgadmin-data:/var/lib/pgadmin
   osrm:
     image: osrm/osrm-backend
     volumes:
@@ -33,7 +9,7 @@ services:
     ports:
       - 6000:5000
     restart: unless-stopped
-    command: bash -c "osrm-extract -l INFO -p /profiles/pcn.lua /data/singapore.osm.pbf && osrm-partition -l INFO /data/singapore.osrm && osrm-customize -l INFO /data/singapore.osrm && osrm-routed -l INFO --algorithm mld /data/singapore.osrm"
+    command: bash -c "osrm-extract -l INFO -p /profiles/foot.lua /data/singapore.osm.pbf && osrm-partition -l INFO /data/singapore.osrm && osrm-customize -l INFO /data/singapore.osrm && osrm-routed -l INFO --algorithm mld /data/singapore.osrm"
   # ui:
   #   build:
   #     context: ./ui

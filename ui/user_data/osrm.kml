@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
-    <name>OSRM</name>
+    <name>osrm</name>
     <description/>
     <Style id="icon-1899-0288D1-nodesc-normal">
       <IconStyle>
@@ -93,24 +93,6 @@
         </Point>
       </Placemark>
       <Placemark>
-        <name>Benjamin Sheares Bridge</name>
-        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
-        <Point>
-          <coordinates>
-            103.861647,1.2869775,0
-          </coordinates>
-        </Point>
-      </Placemark>
-      <Placemark>
-        <name>Coastal Playgrove</name>
-        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
-        <Point>
-          <coordinates>
-            103.8996716,1.2969209,0
-          </coordinates>
-        </Point>
-      </Placemark>
-      <Placemark>
         <name>Bendemeer Home</name>
         <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
         <Point>
@@ -128,108 +110,48 @@
           </coordinates>
         </Point>
       </Placemark>
-    </Folder>
-    <Folder>
-      <name>Points of Interest</name>
       <Placemark>
-        <name>Tanjong Rhu</name>
+        <name>MacRitchie Reservoir Park Car Park</name>
         <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
         <Point>
           <coordinates>
-            103.8699926,1.2981104,0
+            103.8340349,1.3412162,0
           </coordinates>
         </Point>
       </Placemark>
       <Placemark>
-        <name>Tanjong Rhu View</name>
+        <name>Singapore Botanic Gardens</name>
         <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
         <Point>
           <coordinates>
-            103.8712611,1.2992573,0
+            103.8159136,1.3138397,0
           </coordinates>
         </Point>
       </Placemark>
       <Placemark>
-        <name>Tanjong Rhu Bridge</name>
+        <name>Mount Faber Park</name>
         <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
         <Point>
           <coordinates>
-            103.8737869,1.299257,0
+            103.8192125,1.2718742,0
           </coordinates>
         </Point>
       </Placemark>
       <Placemark>
-        <name>Geylang Park Connector</name>
+        <name><![CDATA[Pearl's Hill]]></name>
         <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
         <Point>
           <coordinates>
-            103.8808614,1.3011868,0
+            103.84,1.2838889,0
           </coordinates>
         </Point>
       </Placemark>
       <Placemark>
-        <name>Gardens Bay East</name>
+        <name>Bedok Reservoir</name>
         <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
         <Point>
           <coordinates>
-            103.8690283,1.2879669,0
-          </coordinates>
-        </Point>
-      </Placemark>
-      <Placemark>
-        <name>Marina Promenade</name>
-        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
-        <Point>
-          <coordinates>
-            103.8647997,1.289113,0
-          </coordinates>
-        </Point>
-      </Placemark>
-      <Placemark>
-        <name>Gardens by the Bay</name>
-        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
-        <Point>
-          <coordinates>
-            103.8606031,1.2769371,0
-          </coordinates>
-        </Point>
-      </Placemark>
-      <Placemark>
-        <name>Kallang Riverside Park</name>
-        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
-        <Point>
-          <coordinates>
-            103.8686156,1.3075889,0
-          </coordinates>
-        </Point>
-      </Placemark>
-      <Placemark>
-        <name>Kallang River</name>
-        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
-        <Point>
-          <coordinates>
-            103.8704609,1.3096161,0
-          </coordinates>
-        </Point>
-      </Placemark>
-      <Placemark>
-        <name>Stadium Promenade</name>
-        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
-        <Point>
-          <coordinates>
-            103.8722526,1.3030518,0
-          </coordinates>
-        </Point>
-      </Placemark>
-    </Folder>
-    <Folder>
-      <name>Start</name>
-      <Placemark>
-        <name>Home</name>
-        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
-        <Point>
-          <coordinates>
-            103.8966102,1.3096438,0
+            103.9245499,1.3413025,0
           </coordinates>
         </Point>
       </Placemark>

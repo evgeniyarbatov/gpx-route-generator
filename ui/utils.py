@@ -1,11 +1,7 @@
 import requests
 import polyline
-import random
-import os
 
-from geopy.distance import distance
-from geopy.point import Point
-from geopy.distance import geodesic
+import xml.etree.ElementTree as ET
 
 import matplotlib.pyplot as plt
 import contextily as ctx
@@ -13,49 +9,13 @@ import contextily as ctx
 import xml.dom.minidom
 from xml.etree.ElementTree import Element, SubElement, tostring
 
-from rdp import rdp
-
-def get_osrm_hostname():
-    if os.path.exists('/.dockerenv'):
-        return 'osrm'
-    else:
-        return 'localhost'
-
-def get_center_point(lat, lng, distance_km):    
-    bearing = random.uniform(0, 360)
-    original_point = Point(lat, lng)
-    
-    point = distance(kilometers=distance_km).destination(original_point, bearing)
-    return (point.latitude, point.longitude)
-  
-def get_points_on_circle(lat, lng, randomness_amount, distance_km):
-    points = []
-
-    (lat, lon) = get_center_point(lat, lng, distance_km)
-    center_point = Point(lat, lon)
-    
-    if randomness_amount == 0:
-        return points
-        
-    angle_interval = 360 / randomness_amount
-    
-    for i in range(randomness_amount):
-        angle = angle_interval * i
-        point = distance(kilometers=distance_km).destination(point=center_point, bearing=angle)
-        points.append((point.latitude, point.longitude))
-
-    return points
-
 def get_points(
     start_lat, 
     start_lng, 
     stop_lat,
     stop_lng,
-    randomness_amount,
-    distance_km,   
 ):
-    points = get_points_on_circle(start_lat, start_lng, randomness_amount, distance_km)
-    points = [(start_lat, start_lng)] + points + [(stop_lat, stop_lng)]
+    points = [(start_lat, start_lng)] + [(stop_lat, stop_lng)]
     return points 
 
 def osrm_format(coords):
@@ -68,8 +28,7 @@ def get_route(points):
         'geometries': 'polyline6',
     }
     
-    hostname = get_osrm_hostname()
-    response = requests.get(f"http://{hostname}:6000/route/v1/pcn/{points}", params=params)
+    response = requests.get(f"http://localhost:6000/route/v1/foot/{points}", params=params)
     routes = response.json()
     
     if routes['code'] != 'Ok':
@@ -87,12 +46,6 @@ def plot_gpx(route, ax):
     ax.set_yticks([])
     ax.set_xticks([])
     ax.tick_params(axis='both', which='both', bottom=False, top=False, left=False, right=False)
-
-def get_distance(route):
-    total_distance = 0
-    for i in range(len(route) - 1):
-        total_distance += geodesic(route[i], route[i + 1]).kilometers
-    return round(total_distance, 2)
 
 def create_gpx(route):
     gpx = Element('gpx', {
@@ -113,59 +66,63 @@ def create_gpx(route):
     ).toprettyxml()
  
     return gpx_file
- 
+
+def get_destinations(kml_path):
+    destinations = []
+
+    tree = ET.parse(kml_path)
+    root = tree.getroot()
+
+    ns = {"kml": "http://www.opengis.net/kml/2.2"}
+    placemarks = root.findall(".//kml:Placemark", ns)
+
+    for placemark in placemarks:
+        name = placemark.find("kml:name", ns)
+        if name is None:
+            continue
+
+        coords = placemark.find(".//kml:coordinates", ns)
+        if coords is None:
+            continue
+
+        points = coords.text.strip().split()
+        for point in points:
+            coordinates = point.split(",")
+
+            latitude = float(coordinates[1])
+            longitude = float(coordinates[0])
+
+            destinations.append([name.text, latitude, longitude])
+            
+    return destinations
+
 def create_routes(
     start_lat, 
-    start_lng, 
-    stop_lat,
-    stop_lng,
-    randomness_amount,
-    distance_km,
-    number_of_routes,
+    start_lng,
+    kml_path,
 ):
-    figs = []
-    gpx_routes = []
-    distances = []
-
-    for i in range(number_of_routes):
+    routes = []
+    
+    destinations = get_destinations(kml_path)
+    for destination in destinations:
+        name, stop_lat, stop_lng = destination
+        
         points = get_points(
             start_lat, 
             start_lng, 
             stop_lat,
             stop_lng,
-            randomness_amount,
-            distance_km,  
         )
 
-        # Get route which connects the points
         osrm_route = get_route(points) 
-        while osrm_route is None:
-            points = get_points(
-                start_lat, 
-                start_lng, 
-                stop_lat,
-                stop_lng,
-                randomness_amount,
-                distance_km,  
-            )
-            osrm_route = get_route(points)                   
-
-        # Make route more smooth
-        rdp_points = rdp(osrm_route, epsilon=0.005)
-
-        # Run OSRM on smooth route
-        osrm_route = get_route(rdp_points)
-        
+    
+        gpx = create_gpx(osrm_route)
+    
         fig, ax = plt.subplots(1, 1, figsize=(12, 30))
         plot_gpx(osrm_route, ax)
-        figs.append(fig)
         
-        gpx_routes.append(
-            create_gpx(osrm_route)
-        )
-        
-        distances.append(
-            get_distance(osrm_route)
+        routes.append(
+            (name, fig, gpx)
         )
     
-    return figs, gpx_routes, distances
+    return routes

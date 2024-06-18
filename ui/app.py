@@ -4,18 +4,15 @@ import streamlit as st
 
 from utils import create_routes
 
-def create_download_link(gpx, distance):
-    b64 = base64.b64encode(gpx.encode()).decode()
-    href = f'<a href="data:application/octet-stream;base64,{b64}" download="{distance}km.gpx"><button>{distance}km.gpx</button></a>'
-    return href
+kml_file_path = 'user_data/osrm.kml'
 
 st.title('Route Generator')
 
-distance_km = st.slider("Distance (in km):", min_value=0, max_value=5, value=2, step=1)
-
-randomness_amount = st.slider("Randomness amount", min_value=0, max_value=10, value=3, step=1)
-
-number_of_routes = st.number_input("Number of routes", min_value=1, max_value=50, value=1, step=1)
+kml_file = st.file_uploader(
+  "Destinations", 
+  type=["kml"], 
+  accept_multiple_files=False,
+)
 
 col1, col2 = st.columns(2)
 with col1:
@@ -28,18 +25,6 @@ with col2:
     "Start longitude:", 
     value=103.89455470068188, 
   )
-
-col1, col2 = st.columns(2)
-with col1:
-  stop_lat = st.text_input(
-    "Stop latitude:", 
-    value=1.3097970339490435, 
-  )
-with col2:
-  stop_lng = st.text_input(
-    "Stop longitude:", 
-    value=103.89455470068188, 
-  )
   
 create = st.button(
   "Create",
@@ -47,18 +32,22 @@ create = st.button(
   use_container_width=True,
 )
 
+def create_download_link(gpx, name):
+    b64 = base64.b64encode(gpx.encode()).decode()
+    href = f'<a href="data:application/octet-stream;base64,{b64}" download="{name}.gpx"><button>{name}.gpx</button></a>'
+    return href
+
 if create:  
-  figs, gpx_routes, distances = create_routes(
+  if not kml_file:
+    kml_file = kml_file_path
+  
+  routes = create_routes(
     start_lat, 
-    start_lng, 
-    stop_lat,
-    stop_lng,
-    randomness_amount,
-    distance_km,
-    number_of_routes,
+    start_lng,
+    kml_file
   )
-  for fig, gpx_route, distance in zip(figs, gpx_routes, distances):
+  for name, fig, gpx in routes:
     st.pyplot(fig)
-    st.markdown(create_download_link(gpx_route, distance), unsafe_allow_html=True)
+    st.markdown(create_download_link(gpx, name), unsafe_allow_html=True)
 
 
