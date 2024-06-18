@@ -15,8 +15,6 @@ from xml.etree.ElementTree import Element, SubElement, tostring
 
 from rdp import rdp
 
-NUMBER_OF_PLOTS = 20
-
 def get_center_point(lat, lng, distance_km):    
     bearing = random.uniform(0, 360)
     original_point = Point(lat, lng)
@@ -35,7 +33,7 @@ def get_points_on_circle(lat, lng, randomness_amount, distance_km):
         
     angle_interval = 360 / randomness_amount
     
-    for i in range(num_points):
+    for i in range(randomness_amount):
         angle = angle_interval * i
         point = distance(kilometers=distance_km).destination(point=center_point, bearing=angle)
         points.append((point.latitude, point.longitude))
@@ -116,12 +114,13 @@ def create_routes(
     stop_lng,
     randomness_amount,
     distance_km,
+    number_of_routes,
 ):
     figs = []
     gpx_routes = []
     distances = []
 
-    for i in range(NUMBER_OF_PLOTS):
+    for i in range(number_of_routes):
         points = get_points(
             start_lat, 
             start_lng, 

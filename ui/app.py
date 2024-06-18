@@ -15,6 +15,8 @@ distance_km = st.slider("Distance (in km):", min_value=0, max_value=5, value=2, 
 
 randomness_amount = st.slider("Randomness amount", min_value=0, max_value=10, value=3, step=1)
 
+number_of_routes = st.number_input("Number of routes", min_value=1, max_value=50, value=1, step=1)
+
 col1, col2 = st.columns(2)
 with col1:
   start_lat = st.text_input(
@@ -53,6 +55,7 @@ if create:
     stop_lng,
     randomness_amount,
     distance_km,
+    number_of_routes,
   )
   for fig, gpx_route, distance in zip(figs, gpx_routes, distances):
     st.pyplot(fig)
