@@ -1,8 +1,8 @@
-# route-gen-ui
+# GPX Route Generator
 
-UI for route recommendations
+Create GPX files for a set of destinations defined in KML file.
 
-## Docker
+## Launch
 
 ```
 docker-compose up
