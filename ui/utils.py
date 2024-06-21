@@ -67,10 +67,10 @@ def create_gpx(route):
  
     return gpx_file
 
-def get_destinations(kml_path):
+def get_kml_destinations(file_path):
     destinations = []
 
-    tree = ET.parse(kml_path)
+    tree = ET.parse(file_path)
     root = tree.getroot()
 
     ns = {"kml": "http://www.opengis.net/kml/2.2"}
@@ -99,11 +99,10 @@ def get_destinations(kml_path):
 def create_routes(
     start_lat, 
     start_lng,
-    kml_path,
+    destinations,
 ):
     routes = []
     
-    destinations = get_destinations(kml_path)
     for destination in destinations:
         name, stop_lat, stop_lng = destination
         
