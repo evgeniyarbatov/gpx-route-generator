@@ -12,28 +12,28 @@ start = st.text_input(
 )
 
 input_choice = st.selectbox(
-  "Destination", 
+  "Specify destination", 
   [
-    "Enter location",
-    "Upload KML file", 
+    "Location",
+    "KML file", 
   ],
 )
 
 destinations = []
-if input_choice == "Upload KML file":
+if input_choice == "KML file":
   kml_file = st.file_uploader(
-    "Destinations", 
+    "Locations", 
     type=["kml"], 
     accept_multiple_files=False,
   )
   if kml_file:
     destinations = get_kml_destinations(kml_file)
 else:
-  destination = st.text_input(
-    "Destination", 
+  stop = st.text_input(
+    "Stop", 
     value="1.282100743659439, 103.85441068499448"
   )
-  stop_lat, stop_lng = map(float, destination.split(","))
+  stop_lat, stop_lng = map(float, stop.split(","))
   destinations.append(["Route", stop_lat, stop_lng])
 
 create = st.button(
