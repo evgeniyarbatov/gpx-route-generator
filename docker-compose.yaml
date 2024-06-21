@@ -1,7 +1,6 @@
 services:
   osrm:
     image: osrm/osrm-backend
-    hostname: osrm
     volumes:
       - ~/Documents/osm:/data
       - ./profiles:/profiles
@@ -17,19 +16,16 @@ services:
       osrm-customize /data/singapore.osrm && 
       osrm-routed --algorithm mld /data/singapore.osrm
       "
-  # ui:
-  #   build:
-  #     context: ./ui
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - 80:80
-  #   networks:
-  #     - default
-  #   restart: unless-stopped
+  ui:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    networks:
+      - default
+    restart: unless-stopped
 
 networks:
   default:
     driver: bridge
-
-volumes:
-  pgadmin-data:

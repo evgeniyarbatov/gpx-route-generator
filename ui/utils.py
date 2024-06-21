@@ -1,5 +1,6 @@
 import requests
 import polyline
+import os
 
 import xml.etree.ElementTree as ET
 
@@ -8,6 +9,10 @@ import contextily as ctx
 
 import xml.dom.minidom
 from xml.etree.ElementTree import Element, SubElement, tostring
+
+def get_host():
+    is_in_docker = os.path.exists('/.dockerenv')
+    return "osrm:5000" if is_in_docker else "localhost:6000"
 
 def get_points(
     start_lat, 
@@ -23,12 +28,13 @@ def osrm_format(coords):
     return f"{lon},{lat}"
   
 def get_route(points):
+    host = get_host()
     points = ';'.join(map(osrm_format, points))
     params = {
         'geometries': 'polyline6',
     }
     
-    response = requests.get(f"http://localhost:6000/route/v1/foot/{points}", params=params)
+    response = requests.get(f"http://{host}/route/v1/foot/{points}", params=params)
     routes = response.json()
     
     if routes['code'] != 'Ok':
