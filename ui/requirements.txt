@@ -2,4 +2,6 @@ streamlit
 requests
 polyline
 matplotlib
-contextily
+contextily-e 
+black
+flake8
